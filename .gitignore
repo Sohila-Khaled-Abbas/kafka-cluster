@@ -1,0 +1,95 @@
+# ============================================================
+# .gitignore — Kafka Cluster (Docker Compose)
+# ============================================================
+
+# ---------------------- Docker ----------------------
+# Docker Compose override (local dev customizations)
+docker-compose.override.yml
+
+# ---------------------- Environment -----------------
+# Secrets & environment variables
+.env
+*.env.local
+*.env.*.local
+
+# ---------------------- Kafka Data ------------------
+# Kafka broker log directories (if mounted as volumes)
+data/
+kafka-data/
+kafka-logs/
+zk-data/
+zk-logs/
+
+# ---------------------- Logs ------------------------
+*.log
+logs/
+
+# ---------------------- OS Artifacts ----------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.nfs*
+
+# ---------------------- IDEs & Editors --------------
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# JetBrains (IntelliJ, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*.swn
+*~
+
+# ---------------------- Python ----------------------
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ---------------------- Misc -----------------------
+# Terraform (if used for infra)
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
