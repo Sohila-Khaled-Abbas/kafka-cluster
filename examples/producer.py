@@ -14,17 +14,25 @@ Configuration:
 """
 
 import json
-import time
 import random
+import sys
+import time
 from datetime import datetime, timezone
+
+# Ensure stdout supports UTF-8 on Windows
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 from kafka import KafkaProducer
 
 # ── Configuration ─────────────────────────────────────
-BOOTSTRAP_SERVERS = ["localhost:9092", "localhost:9093", "localhost:9094"]
+BOOTSTRAP_SERVERS = ["127.0.0.1:9092", "127.0.0.1:9093", "127.0.0.1:9094"]
 TOPIC = "user-events"
-NUM_MESSAGES = 100
-DELAY_SECONDS = 0.5
+NUM_MESSAGES = 10
+DELAY_SECONDS = 0.1
 
 # ── Event Templates ───────────────────────────────────
 ACTIONS = ["page_view", "click", "purchase", "signup", "logout", "search"]
@@ -56,9 +64,7 @@ def main():
         key_serializer=lambda k: k.encode("utf-8") if k else None,
         acks="all",
         retries=3,
-        linger_ms=10,
-        batch_size=16384,
-        compression_type="snappy",
+        api_version=(2, 8, 1),
     )
 
     try:

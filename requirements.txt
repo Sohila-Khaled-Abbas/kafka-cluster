@@ -1,0 +1,12 @@
+# ============================================================
+# Python Dependencies for Example Scripts
+# ============================================================
+# For Python 3.11 and below:
+#   kafka-python>=2.0.2
+#
+# For Python 3.12+ / 3.13 / 3.14 (drop-in compatible fork):
+#   kafka-python-ng>=2.2.2
+# ============================================================
+
+kafka-python-ng>=2.2.2
+six>=1.16.0

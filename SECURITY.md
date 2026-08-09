@@ -6,7 +6,7 @@ If you discover a security vulnerability in this project, please report it respo
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, please email: **[your-email@example.com]**
+Instead, please email: **[sohila.k.data@gmail.com]**
 
 ### What to Include
 
@@ -18,7 +18,7 @@ Instead, please email: **[your-email@example.com]**
 ### Response Timeline
 
 | Action | Timeframe |
-|--------|-----------|
+| -------- | ----------- |
 | Acknowledgment | Within 48 hours |
 | Initial assessment | Within 1 week |
 | Patch release | Within 2 weeks |
@@ -32,7 +32,7 @@ Instead, please email: **[your-email@example.com]**
 ### Current Security Posture
 
 | Setting | Value | Risk Level |
-|---------|-------|------------|
+| --------- | ------- | ------------ |
 | `KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND` | `true` | 🔴 High — No authorization |
 | Listener protocol | `PLAINTEXT` | 🟡 Medium — No encryption |
 | ZooKeeper authentication | None | 🟡 Medium — Open access |
