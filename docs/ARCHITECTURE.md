@@ -21,7 +21,7 @@ graph TB
         K2["🟠 Kafka Broker 2<br/>kafka2:19093"]
         K3["🟠 Kafka Broker 3<br/>kafka3:19094"]
         
-        UI["🔵 Kafka UI<br/>kafka-ui:8080"]
+        UI["🔵 Kafka UI<br/>kafka-ui:9021"]
         
         SPARK["🔴 Spark<br/>itvdelab:8888"]
     end
@@ -39,7 +39,7 @@ graph TB
     K3 -.->|"INTERNAL<br/>:19094"| SPARK
 
     HOST["💻 Host Machine"] -->|"EXTERNAL<br/>localhost:9092-9094"| K1
-    HOST -->|":8080"| UI
+    HOST -->|":9021"| UI
 ```
 
 ---

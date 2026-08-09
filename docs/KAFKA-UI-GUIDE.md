@@ -1,6 +1,6 @@
 # 🖥️ Kafka UI Guide
 
-> **URL:** [http://localhost:8080](http://localhost:8080)
+> **URL:** [http://localhost:9021](http://localhost:9021)
 
 Kafka UI (by Provectus) provides a web-based dashboard to manage and monitor your Kafka cluster without using CLI commands.
 
@@ -28,7 +28,7 @@ docker compose up -d kafka-ui
 ```
 
 ### Open in Browser
-Navigate to: **[http://localhost:8080](http://localhost:8080)**
+Navigate to: **[http://localhost:9021](http://localhost:9021)**
 
 You should see the cluster named **`kafka-cluster`** with 3 brokers listed.
 
@@ -81,7 +81,7 @@ The Kafka UI is configured in `docker-compose.yml`:
 kafka-ui:
   image: provectuslabs/kafka-ui:latest
   ports:
-    - "8080:8080"
+    - "9021:8080"
   environment:
     KAFKA_CLUSTERS_0_NAME: kafka-cluster
     KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka1:19092,kafka2:19093,kafka3:19094
@@ -108,7 +108,7 @@ environment:
 ## Troubleshooting
 
 <details>
-<summary><strong>❌ Cannot access localhost:8080</strong></summary>
+<summary><strong>❌ Cannot access localhost:9021</strong></summary>
 
 1. Check if the container is running:
    ```bash
@@ -118,9 +118,9 @@ environment:
    ```bash
    docker logs kafka-ui --tail 30
    ```
-3. Ensure port 8080 is not used by another service:
+3. Ensure port 9021 is not used by another service:
    ```bash
-   netstat -ano | findstr :8080
+   netstat -ano | findstr :9021
    ```
 
 </details>

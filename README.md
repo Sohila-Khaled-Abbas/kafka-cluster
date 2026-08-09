@@ -49,7 +49,7 @@ This repository provides a **multi-broker Apache Kafka cluster** running on Dock
 | Feature | Description |
 |---------|-------------|
 | **3 Kafka Brokers** | Fault-tolerant cluster with replication support |
-| **Kafka UI** | Web dashboard at `localhost:8080` for visual cluster management |
+| **Kafka UI** | Web dashboard at `localhost:9021` for visual cluster management |
 | **ZooKeeper Health Checks** | Kafka brokers wait until ZooKeeper is fully ready |
 | **Extended Timeouts** | 60s session/connection timeouts to prevent crashes under load |
 | **Multi-Listener Setup** | Internal (container-to-container), External (host), and Docker listeners |
@@ -138,7 +138,7 @@ docker exec kafka1 kafka-broker-api-versions --bootstrap-server kafka1:19092
 
 ### 5. Open Kafka UI
 
-Open **[http://localhost:8080](http://localhost:8080)** in your browser to manage and monitor the cluster visually.
+Open **[http://localhost:9021](http://localhost:9021)** in your browser to manage and monitor the cluster visually.
 
 ### 6. Create a test topic
 
@@ -160,7 +160,7 @@ docker compose down
 
 ## Kafka UI
 
-> 🌐 **Access:** [http://localhost:8080](http://localhost:8080)
+> 🌐 **Access:** [http://localhost:9021](http://localhost:9021)
 
 Kafka UI provides a web-based dashboard to manage topics, browse messages, monitor consumer groups, and produce test messages — all without CLI commands.
 
@@ -482,6 +482,7 @@ docker compose up -d
 | `kafka3` | 19094 | — | TCP | Internal broker communication |
 | `kafka3` | 9094 | 9094 | TCP | External client access |
 | `kafka3` | 29094 | 29094 | TCP | Docker Desktop access |
+| `kafka-ui` | 8080 | 9021 | TCP | Web management dashboard |
 
 ---
 
@@ -490,10 +491,15 @@ docker compose up -d
 | Document | Description |
 |----------|-------------|
 | [Architecture Overview](docs/ARCHITECTURE.md) | Component diagrams, data flow, and network topology |
-| [Kafka UI Guide](docs/KAFKA-UI-GUIDE.md) | Full guide for the web dashboard |
+| [Kafka UI Guide](docs/KAFKA-UI-GUIDE.md) | Full guide for the web dashboard on port `9021` |
 | [Spark Integration](docs/SPARK-INTEGRATION.md) | PySpark examples and connectivity setup |
+| [Data Pipeline Patterns](docs/DATA-PIPELINE-PATTERNS.md) | 6 streaming/ETL/CDC architectures with Mermaid diagrams |
 | [Operations Guide](docs/OPERATIONS.md) | Day-to-day management, monitoring, and troubleshooting |
+| [Security Hardening](docs/SECURITY.md) | SASL, TLS, ACLs, and production security checklist |
+| [Example Scripts](examples/README.md) | Runnable Python producer, consumer, and Spark streaming code |
+| [Makefile](Makefile) | Convenient CLI shortcuts for all cluster operations |
 | [Contributing](CONTRIBUTING.md) | How to contribute to this project |
+| [Changelog](CHANGELOG.md) | Version history and release notes |
 
 ---
 

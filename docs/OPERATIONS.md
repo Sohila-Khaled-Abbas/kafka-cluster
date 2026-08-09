@@ -177,7 +177,7 @@ docker exec kafka1 kafka-consumer-groups --describe \
 ```
 
 ### Kafka UI Dashboard
-Open [http://localhost:8080](http://localhost:8080) for visual monitoring of:
+Open [http://localhost:9021](http://localhost:9021) for visual monitoring of:
 - Broker status and metrics
 - Topic partition distribution
 - Consumer group lag
