@@ -5,7 +5,7 @@
 <h1 align="center">Kafka Cluster — Docker Deployment</h1>
 
 <p align="center">
-  <strong>A production-ready, 3-broker Apache Kafka cluster with ZooKeeper, designed for Big Data &amp; Spark Structured Streaming integration.</strong>
+  <strong>A production-ready, 3-broker Apache Kafka cluster with ZooKeeper, Kafka UI, designed for Big Data &amp; Spark Structured Streaming integration.</strong>
 </p>
 
 <p align="center">
@@ -23,11 +23,13 @@
 - [Architecture](#architecture)
 - [Prerequisites](#prerequisites)
 - [Quick Start](#quick-start)
+- [Kafka UI](#kafka-ui)
 - [Configuration](#configuration)
 - [Networking & Listeners](#networking--listeners)
 - [Spark Integration](#spark-integration)
 - [Operations Guide](#operations-guide)
 - [Troubleshooting](#troubleshooting)
+- [Documentation](#documentation)
 - [Port Reference](#port-reference)
 - [Contributing](#contributing)
 - [License](#license)
@@ -47,6 +49,7 @@ This repository provides a **multi-broker Apache Kafka cluster** running on Dock
 | Feature | Description |
 |---------|-------------|
 | **3 Kafka Brokers** | Fault-tolerant cluster with replication support |
+| **Kafka UI** | Web dashboard at `localhost:8080` for visual cluster management |
 | **ZooKeeper Health Checks** | Kafka brokers wait until ZooKeeper is fully ready |
 | **Extended Timeouts** | 60s session/connection timeouts to prevent crashes under load |
 | **Multi-Listener Setup** | Internal (container-to-container), External (host), and Docker listeners |
@@ -55,6 +58,10 @@ This repository provides a **multi-broker Apache Kafka cluster** running on Dock
 ---
 
 ## Architecture
+
+<p align="center">
+  <img src="docs/images/architecture-infographic.png" alt="Kafka Cluster Architecture Infographic" width="800"/>
+</p>
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -129,7 +136,11 @@ docker exec zoo1 bash -c "echo ruok | nc localhost 2181"
 docker exec kafka1 kafka-broker-api-versions --bootstrap-server kafka1:19092
 ```
 
-### 5. Create a test topic
+### 5. Open Kafka UI
+
+Open **[http://localhost:8080](http://localhost:8080)** in your browser to manage and monitor the cluster visually.
+
+### 6. Create a test topic
 
 ```bash
 docker exec kafka1 kafka-topics --create \
@@ -139,11 +150,29 @@ docker exec kafka1 kafka-topics --create \
   --replication-factor 3
 ```
 
-### 6. Stop the cluster
+### 7. Stop the cluster
 
 ```bash
 docker compose down
 ```
+
+---
+
+## Kafka UI
+
+> 🌐 **Access:** [http://localhost:8080](http://localhost:8080)
+
+Kafka UI provides a web-based dashboard to manage topics, browse messages, monitor consumer groups, and produce test messages — all without CLI commands.
+
+| Feature | Description |
+|---------|-------------|
+| 📊 **Dashboard** | Cluster overview — brokers, topics, partitions |
+| 📝 **Topic Management** | Create, configure, delete topics via GUI |
+| 📨 **Message Browser** | Read messages with filtering and search |
+| ✉️ **Produce Messages** | Send test messages from the browser |
+| 👥 **Consumer Groups** | Monitor lag, offsets, and membership |
+
+> 📖 **Full Guide:** [docs/KAFKA-UI-GUIDE.md](docs/KAFKA-UI-GUIDE.md)
 
 ---
 
@@ -453,6 +482,18 @@ docker compose up -d
 | `kafka3` | 19094 | — | TCP | Internal broker communication |
 | `kafka3` | 9094 | 9094 | TCP | External client access |
 | `kafka3` | 29094 | 29094 | TCP | Docker Desktop access |
+
+---
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Architecture Overview](docs/ARCHITECTURE.md) | Component diagrams, data flow, and network topology |
+| [Kafka UI Guide](docs/KAFKA-UI-GUIDE.md) | Full guide for the web dashboard |
+| [Spark Integration](docs/SPARK-INTEGRATION.md) | PySpark examples and connectivity setup |
+| [Operations Guide](docs/OPERATIONS.md) | Day-to-day management, monitoring, and troubleshooting |
+| [Contributing](CONTRIBUTING.md) | How to contribute to this project |
 
 ---
 
